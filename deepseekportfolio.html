@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinand Sunil | Data Scientist</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+        :root {
+            --neon-lime: #CCFE03;
+            --tech-blue: #736EFF;
+            --soft-purple: #B493FC;
+            --white: #FFFFFF;
+            --black: #000000;
+            --main-bg: #0e1012;       
+            --panel-bg: #1a1d21;      
+            --terminal-bg: #1e2226;    
+            --text-dim: #d0d0d0;      
+            --border-dim: rgba(255, 255, 255, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--main-bg);
+            color: var(--white);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background-image: 
+                linear-gradient(rgba(204, 254, 3, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(204, 254, 3, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+        
+        .bg-glow {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw; height: 80vw;
+            background: radial-gradient(circle, rgba(115, 110, 255, 0.12) 0%, rgba(204, 254, 3, 0.05) 40%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        /* --- DUAL MARQUEE --- */
+        .marquee-section {
+            width: 100%;
+            background: var(--black);
+            border-top: 2px solid var(--neon-lime);
+            border-bottom: 2px solid var(--neon-lime);
+            margin: 0;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(204, 254, 3, 0.2);
+        }
+        
+        .marquee-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 18px 0;
+        }
+        
+        .marquee-container:first-child {
+            border-bottom: 1px solid rgba(204, 254, 3, 0.3);
+        }
+
+        .marquee-left .marquee-content {
+            display: flex;
+            width: fit-content;
+            animation: scroll-left 40s linear infinite;
+        }
+        
+        .marquee-right .marquee-content {
+            display: flex;
+            width: fit-content;
+            animation: scroll-right 40s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+            padding: 0 45px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-right: 2px solid var(--neon-lime);
+            white-space: nowrap;
+        }
+        
+        .marquee-item i {
+            color: var(--neon-lime);
+            font-size: 1.3rem;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(14, 16, 18, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--neon-lime);
+        }
+
+        .logo { 
+            font-weight: 700; 
+            font-size: 1.5rem; 
+            color: var(--neon-lime); 
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logo a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover { color: var(--neon-lime); }
+
+        .resume-btn {
+            background: var(--neon-lime);
+            color: var(--black) !important;
+            padding: 12px 36px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(204, 254, 3, 0.6);
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .resume-btn:hover {
+            background: var(--white);
+            color: var(--black) !important;
+            box-shadow: 0 0 35px rgba(204, 254, 3, 0.9);
+            border-color: var(--neon-lime);
+        }
+
+        section { 
+            padding: 100px 10%; 
+            position: relative; 
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 60px;
+            color: var(--white);
+            text-transform: uppercase;
+            display: inline-block;
+            border-bottom: 3px solid var(--neon-lime);
+            padding-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 0 10%;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            margin-top: 20px;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .hero-text h1 { 
+            font-size: 4rem; 
+            color: var(--white); 
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+        
+        .typewriter-container { 
+            font-size: 1.4rem; 
+            color: var(--tech-blue); 
+            height: 40px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .cursor { 
+            display: inline-block; 
+            width: 10px; 
+            height: 1.4rem; 
+            background: var(--neon-lime); 
+            animation: blink 1s infinite; 
+            vertical-align: middle; 
+        }
+        
+        .hero-description {
+            max-width: 550px;
+            color: #ccc;
+            margin: 10px 0 15px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .hero-img-container {
+            flex: 0 0 350px;
+            height: 350px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-img-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: var(--tech-blue);
+            z-index: 1;
+            border-radius: 2px;
+        }
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            mix-blend-mode: normal;
+            border: 2px solid #fff;
+            transform: translate(-15px, -15px);
+            background-color: #ddd; 
+            object-position: 80% center;
+        }
+        .hero-img-container::after {
+            content: '';
+            position: absolute;
+            top: 15px; left: 15px;
+            width: 100%; height: 100%;
+            background-color: var(--neon-lime);
+            opacity: 0.9;
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        .btn-main {
+            background: var(--neon-lime);
+            color: var(--black);
+            padding: 15px 30px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 2px;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            width: fit-content;
+        }
+        .btn-main:hover { 
+            background: transparent; 
+            color: var(--neon-lime); 
+            border-color: var(--neon-lime);
+            box-shadow: 0 0 20px rgba(204, 254, 3, 0.3);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr; 
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .terminal-container {
+            background: var(--terminal-bg);
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(204, 254, 3, 0.2);
+            display: flex;
+            flex-direction: column;
+            height: 100%; 
+        }
+
+        .terminal-header {
+            background: #2d3136;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border-bottom: 1px solid #444;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+
+        .terminal-home-link {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+        .terminal-home-link:hover { color: var(--neon-lime); }
+
+        .terminal-body {
+            padding: 25px;
+            font-size: 0.9rem;
+            color: #dcdcdc;
+            line-height: 1.7;
+            flex-grow: 1;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .code-key { color: var(--soft-purple); }
+        .code-str { color: var(--neon-lime); }
+        .code-comment { color: #6c7986; font-style: italic; }
+        .code-log { color: #888; margin-top: 15px; font-size: 0.8rem; border-top: 1px dashed #444; padding-top: 10px;}
+
+        .education-box {
+            background: var(--panel-bg);
+            border: 1px solid rgba(204, 254, 3, 0.15);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+            gap: 30px;
+            height: 100%; 
+            border-radius: 0;
+        }
+
+        .edu-item {
+            border-bottom: 1px solid rgba(204, 254, 3, 0.1);
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+        }
+        .edu-item:last-child { border: none; padding-bottom: 0; margin-bottom: 0; }
+        
+        .edu-title { font-weight: bold; font-size: 1rem; color: var(--white); }
+        .edu-sub { color: var(--neon-lime); font-size: 0.9rem; margin-top: 2px; }
+        .edu-date { font-size: 0.8rem; color: #999; margin-top: 2px; }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            border-left: 2px solid rgba(204, 254, 3, 0.3);
+        }
+        
+        .job-card-wrapper {
+            position: relative;
+            margin-bottom: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        .job-card {
+            position: relative;
+            padding: 35px;
+            background: rgba(26, 29, 33, 0.5);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(204, 254, 3, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card-wrapper:hover .job-card {
+            background: rgba(26, 29, 33, 0.9);
+            border-color: var(--neon-lime);
+            box-shadow: 0 0 30px rgba(204, 254, 3, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -59px;
+            top: 35px;
+            width: 16px;
+            height: 16px;
+            background: var(--main-bg);
+            border: 2px solid var(--neon-lime);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--neon-lime);
+            z-index: 3;
+        }
+
+        .job-card h3 { 
+            font-size: 1.8rem; 
+            color: var(--white); 
+            font-weight: 700; 
+            margin-bottom: 5px; 
+        }
+        
+        .job-meta { 
+            color: var(--tech-blue); 
+            font-weight: 600; 
+            margin-bottom: 20px; 
+            font-size: 1.1rem; 
+        }
+        
+        .job-list { 
+            list-style: none; 
+        }
+        
+        .job-list li { 
+            margin-bottom: 15px; 
+            color: var(--text-dim); 
+            padding-left: 25px; 
+            position: relative; 
+            line-height: 1.7;
+        }
+        
+        .job-list li::before { 
+            content: '▹'; 
+            color: var(--neon-lime); 
+            position: absolute; 
+            left: 0; 
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--panel-bg);
+            border: 1px solid rgba(204, 254, 3, 0.15);
+            padding: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-radius: 0;
+        }
+        .project-card:hover {
+            border-color: var(--neon-lime);
+            transform: translateY(-5px);
+            background: #23282e;
+            box-shadow: 0 10px 25px rgba(204, 254, 3, 0.1);
+        }
+
+        .p-title { 
+            font-size: 1.3rem; 
+            color: var(--white); 
+            margin-bottom: 10px; 
+            font-weight: bold; 
+        }
+        .p-date { 
+            font-size: 0.8rem; 
+            color: var(--neon-lime); 
+            margin-bottom: 15px; 
+        }
+        .p-desc { 
+            font-size: 0.95rem; 
+            color: var(--text-dim); 
+            margin-bottom: 20px; 
+            flex-grow: 1; 
+            line-height: 1.6;
+        }
+
+        .tech-stack { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            margin-top: auto;
+        }
+        .tech-tag {
+            font-size: 0.7rem;
+            background: rgba(204, 254, 3, 0.08);
+            color: var(--neon-lime);
+            padding: 5px 12px;
+            border-radius: 2px;
+            border: 1px solid rgba(204, 254, 3, 0.2);
+            font-family: 'JetBrains Mono';
+            letter-spacing: 0.5px;
+        }
+
+        /* --- SKILLS SECTION - BALANCED WIDTH --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1.4fr 1.6fr; /* Chart 47%, Text 53% - perfectly balanced */
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .chart-wrapper {
+            background: var(--panel-bg);
+            padding: 25px;
+            border: 1px solid rgba(204, 254, 3, 0.15);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 450px;
+        }
+        
+        #skillsChart {
+            width: 100% !important;
+            height: 100% !important;
+            max-height: 450px;
+        }
+
+        .skills-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .skill-category { 
+            margin-bottom: 22px; 
+        }
+        
+        .skill-category:last-child { 
+            margin-bottom: 0; 
+        }
+        
+        .skill-category h3 { 
+            color: var(--white); 
+            font-size: 1.1rem; 
+            margin-bottom: 14px; 
+            border-left: 3px solid var(--neon-lime); 
+            padding-left: 12px; 
+            font-weight: 600;
+        }
+        
+        .tag-cloud { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+        
+        .skill-tag {
+            background: rgba(0,0,0,0.4);
+            color: #eee;
+            padding: 7px 14px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(204, 254, 3, 0.15);
+            transition: 0.2s;
+            border-radius: 2px;
+        }
+        .skill-tag:hover { 
+            border-color: var(--neon-lime); 
+            color: var(--neon-lime); 
+            background: rgba(204, 254, 3, 0.05);
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: var(--panel-bg);
+            padding: 60px;
+            border: 1px solid rgba(204, 254, 3, 0.3);
+            border-radius: 0;
+        }
+        .contact-info div { margin-bottom: 20px; font-size: 1.1rem; }
+        .contact-info i { color: var(--neon-lime); margin-right: 15px; width: 20px; text-align: center; }
+        .contact-info a { color: var(--white); text-decoration: none; }
+        .contact-info a:hover { color: var(--neon-lime); }
+
+        .form-status {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(204, 254, 3, 0.1);
+            border: 1px solid var(--neon-lime);
+            color: var(--neon-lime);
+            text-align: center;
+            display: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: var(--panel-bg);
+            border: 2px solid var(--neon-lime);
+            width: 100%;
+            max-width: 900px;
+            padding: 50px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 60px rgba(204, 254, 3, 0.15);
+            border-radius: 0;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            font-size: 2rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+        .close-btn:hover { color: var(--neon-lime); }
+        
+        .project-image {
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            background: #1e2226;
+            border: 1px solid rgba(204, 254, 3, 0.2);
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .project-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .image-placeholder {
+            background: #23282e;
+            width: 100%;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-lime);
+            font-size: 2rem;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        /* Image gallery for multiple screenshots */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .gallery-item {
+            background: #1e2226;
+            border: 1px solid rgba(204, 254, 3, 0.2);
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .gallery-item .image-placeholder {
+            min-height: 200px;
+            font-size: 1rem;
+            padding: 10px;
+        }
+        
+        .gallery-item p {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        
+        .github-btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 25px;
+        }
+        .github-btn {
+            background: #24292e;
+            color: white;
+            padding: 16px 42px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            border: 2px solid var(--neon-lime);
+            transition: 0.3s;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+        }
+        .github-btn:hover {
+            background: var(--neon-lime);
+            color: var(--black);
+            border-color: white;
+            transform: scale(1.02);
+        }
+
+        /* --- AI CHAT WIDGET - FIXED WITH COMPLETE KNOWLEDGE BASE --- */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        
+        .chat-bubble {
+            background: var(--soft-purple);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px 30px 0 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--neon-lime);
+            letter-spacing: 0.5px;
+            position: relative;
+            animation: jump 1.2s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(180, 147, 252, 0.7);
+            pointer-events: auto;
+            cursor: pointer;
+        }
+        
+        .chat-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 12px solid var(--soft-purple);
+            filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.2));
+        }
+        
+        .chat-bubble i {
+            color: var(--neon-lime);
+            font-size: 1.1rem;
+        }
+        
+        @keyframes jump {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .ai-fab {
+            width: 70px;
+            height: 70px;
+            background: var(--tech-blue);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 5px 30px rgba(115, 110, 255, 0.7);
+            transition: 0.3s;
+            border: 2px solid var(--neon-lime);
+            animation: pulse-glow 2s infinite;
+            pointer-events: auto;
+        }
+        .ai-fab:hover { 
+            transform: scale(1.15); 
+            background: var(--neon-lime); 
+            color: var(--black);
+            border-color: white;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 5px 30px rgba(115, 110, 255, 0.7); }
+            50% { box-shadow: 0 5px 50px rgba(115, 110, 255, 1); }
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 130px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: var(--terminal-bg);
+            border: 2px solid var(--tech-blue);
+            border-radius: 12px 12px 0 12px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+            z-index: 10000;
+            overflow: hidden;
+            pointer-events: auto;
+        }
+        
+        .chat-header { 
+            background: var(--tech-blue); 
+            padding: 16px; 
+            font-weight: bold; 
+            display: flex; 
+            justify-content: space-between; 
+            color: white;
+            border-bottom: 2px solid var(--neon-lime);
+            pointer-events: auto;
+        }
+        .chat-body { 
+            flex: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+            font-size: 0.85rem; 
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            pointer-events: auto;
+        }
+        .chat-input-area { 
+            padding: 15px; 
+            border-top: 1px solid rgba(204, 254, 3, 0.2); 
+            display: flex; 
+            gap: 10px; 
+            background: #1a1d21;
+            pointer-events: auto;
+        }
+        .chat-input { 
+            flex: 1; 
+            background: #0e1012; 
+            border: 1px solid #444; 
+            padding: 12px 16px; 
+            color: white; 
+            border-radius: 8px; 
+            outline: none;
+            font-family: 'JetBrains Mono', monospace;
+            pointer-events: auto;
+        }
+        .chat-send { 
+            background: var(--neon-lime); 
+            border: none; 
+            padding: 0 24px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--black);
+            letter-spacing: 1px;
+            pointer-events: auto;
+        }
+        
+        .msg { 
+            padding: 12px 16px; 
+            border-radius: 12px; 
+            margin-bottom: 12px; 
+            max-width: 85%; 
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .msg.bot { 
+            background: #1e2226; 
+            color: #ddd; 
+            align-self: flex-start;
+            border-left: 3px solid var(--soft-purple);
+        }
+        .msg.user { 
+            background: var(--tech-blue); 
+            color: white; 
+            align-self: flex-end; 
+            margin-left: auto;
+            border-right: 3px solid var(--neon-lime);
+        }
+
+        @media (max-width: 900px) {
+            .hero, .about-container, .skills-container, .contact-section { grid-template-columns: 1fr; }
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 100px; padding-bottom: 100px; }
+            .hero-text { align-items: center; }
+            .hero-img-container { width: 300px; height: 300px; margin: 0 auto; }
+            .projects-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 1.8rem; }
+            .hero-text h1 { font-size: 3rem; }
+            .skills-container { grid-template-columns: 1fr; }
+            .chart-wrapper { min-height: 400px; }
+            .chat-window {
+                width: 300px;
+                right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo"><a href="#hero">ABHINAND<span style="color:var(--white)">.SUNIL</span></a></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <a href="path/to/resume.pdf" download class="resume-btn">
+                <i class="fas fa-download"></i> RESUME
+            </a>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-text">
+            <div style="color: var(--neon-lime); font-weight: bold; margin-bottom: 5px; letter-spacing: 2px;">[ SYSTEM ONLINE ]</div>
+            <h1>Abhinand Sunil</h1>
+            <div class="typewriter-container">
+                <span id="typewriter"></span><span class="cursor"></span>
+            </div>
+            <p class="hero-description">
+                Data Scientist turning complex datasets into actionable insights through statistical modeling, machine learning, and intelligent automation.            </p>
+            <a href="#contact" class="btn-main">INITIALIZE CONTACT</a>
+        </div>
+        
+        <div class="hero-img-container">
+            <div class="hero-img-bg"></div>
+            <img src="images/profile.jpeg" alt="Abhinand Sunil" class="hero-img">
+        </div>
+    </section>
+
+    <!-- DUAL MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee-container marquee-left">
+            <div class="marquee-content">
+                <div class="marquee-item"><i class="fas fa-brain"></i> MACHINE LEARNING</div>
+                <div class="marquee-item"><i class="fas fa-robot"></i> AI AGENTS</div>
+                <div class="marquee-item"><i class="fas fa-chart-line"></i> TIME-SERIES</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> AUTOMATION</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> DATA ENGINEERING</div>
+                <div class="marquee-item"><i class="fas fa-cloud"></i> CLOUD</div>
+                <div class="marquee-item"><i class="fas fa-chart-bar"></i> ANALYTICS</div>
+                <div class="marquee-item"><i class="fas fa-brain"></i> DEEP LEARNING</div>
+                <div class="marquee-item"><i class="fas fa-robot"></i> LLM OPS</div>
+                <div class="marquee-item"><i class="fas fa-chart-line"></i> FORECASTING</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> SELF-HEALING</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> BIG DATA</div>
+                <div class="marquee-item"><i class="fas fa-brain"></i> MACHINE LEARNING</div>
+                <div class="marquee-item"><i class="fas fa-robot"></i> AI AGENTS</div>
+                <div class="marquee-item"><i class="fas fa-chart-line"></i> TIME-SERIES</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> AUTOMATION</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> DATA ENGINEERING</div>
+                <div class="marquee-item"><i class="fas fa-cloud"></i> CLOUD</div>
+                <div class="marquee-item"><i class="fas fa-chart-bar"></i> ANALYTICS</div>
+                <div class="marquee-item"><i class="fas fa-brain"></i> DEEP LEARNING</div>
+                <div class="marquee-item"><i class="fas fa-robot"></i> LLM OPS</div>
+                <div class="marquee-item"><i class="fas fa-chart-line"></i> FORECASTING</div>
+                <div class="marquee-item"><i class="fas fa-shield-alt"></i> SELF-HEALING</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> BIG DATA</div>
+            </div>
+        </div>
+        
+        <div class="marquee-container marquee-right">
+            <div class="marquee-content">
+                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> SQL</div>
+                <div class="marquee-item"><i class="fas fa-bolt"></i> SPARK</div>
+                <div class="marquee-item"><i class="fas fa-chart-simple"></i> POWER BI</div>
+                <div class="marquee-item"><i class="fas fa-arrows-spread"></i> NIFI</div>
+                <div class="marquee-item"><i class="fas fa-brain"></i> XGBOOST</div>
+                <div class="marquee-item"><i class="fas fa-clock"></i> PROPHET</div>
+                <div class="marquee-item"><i class="fas fa-video"></i> WEBRTC</div>
+                <div class="marquee-item"><i class="fas fa-cloud"></i> AZURE</div>
+                <div class="marquee-item"><i class="fas fa-code"></i> CLICKHOUSE</div>
+                <div class="marquee-item"><i class="fas fa-network-wired"></i> DOCKER</div>
+                <div class="marquee-item"><i class="fas fa-eye"></i> OLLAMA</div>
+                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> SQL</div>
+                <div class="marquee-item"><i class="fas fa-bolt"></i> SPARK</div>
+                <div class="marquee-item"><i class="fas fa-chart-simple"></i> POWER BI</div>
+                <div class="marquee-item"><i class="fas fa-arrows-spread"></i> NIFI</div>
+                <div class="marquee-item"><i class="fas fa-brain"></i> XGBOOST</div>
+                <div class="marquee-item"><i class="fas fa-clock"></i> PROPHET</div>
+                <div class="marquee-item"><i class="fas fa-video"></i> WEBRTC</div>
+                <div class="marquee-item"><i class="fas fa-cloud"></i> AZURE</div>
+                <div class="marquee-item"><i class="fas fa-code"></i> CLICKHOUSE</div>
+                <div class="marquee-item"><i class="fas fa-network-wired"></i> DOCKER</div>
+                <div class="marquee-item"><i class="fas fa-eye"></i> OLLAMA</div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    <a href="#hero" class="terminal-home-link">ABHINAND.SUNIL</a>
+                    <div style="margin-left:auto; color:#666; font-size:0.8rem;">bash -- 80x24</div>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="code-comment"># Loading profile info...</span></p>
+                    <p>
+                        <span class="code-key">const</span> <span class="code-str">engineer</span> = {<br>
+                        &nbsp;&nbsp;name: <span class="code-str">"Abhinand Sunil"</span>,<br>
+                        &nbsp;&nbsp;loc: <span class="code-str">"Dubai, UAE"</span>,<br>
+                        &nbsp;&nbsp;visa: <span class="code-str">"Golden Visa"</span>,<br>
+                        &nbsp;&nbsp;role: <span class="code-str">"Data Scientist"</span>,<br>
+                        &nbsp;&nbsp;interests: [<span class="code-str">"ML"</span>, <span class="code-str">"System Design"</span>, <span class="code-str">"Automation"</span>]
+                        <br>
+                        };
+                    </p>
+                    
+                    <br>
+                    
+                    <p><span class="code-comment"># Executive Summary</span></p>
+                    <p>Skilled in time-series analysis and predictive modeling. Passionate about building self-healing agents and scalable data pipelines.</p>
+                    
+                    <div class="code-log">
+                        > Verifying certifications... OK<br>
+                        > Checking academic records... OK<br>
+                        > System ready for deployment.
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-box">
+                <div>
+                    <h3 style="color: var(--white); border-bottom: 2px solid var(--neon-lime); padding-bottom: 10px; margin-bottom: 15px;">Education</h3>
+                    <div class="edu-item">
+                        <div class="edu-title">Middlesex University, Dubai</div>
+                        <div class="edu-sub">BEng (Honors) Computer Systems Engineer</div>
+                        <div class="edu-date">First Class Honours | 2024</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-title">Our Own English High School, Sharjah</div>
+                        <div class="edu-sub">CBSE Curriculum</div>
+                        <div class="edu-date">Grade 12: 92% | Grade 10: 95%</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color: var(--white); border-bottom: 2px solid var(--neon-lime); padding-bottom: 10px; margin-bottom: 15px;">Certifications</h3>
+                    <div class="tech-stack" style="flex-direction: column; gap: 8px;">
+                        <span class="tech-tag" style="background: rgba(0,0,0,0.2); width: fit-content; font-size: 0.85rem;">Cisco Programming Essentials in Python</span>
+                        <span class="tech-tag" style="background: rgba(0,0,0,0.2); width: fit-content; font-size: 0.85rem;">Azure Data Fundamentals</span>
+                        <span class="tech-tag" style="background: rgba(0,0,0,0.2); width: fit-content; font-size: 0.85rem;">Oracle Java Pathway</span>
+                        <span class="tech-tag" style="background: rgba(0,0,0,0.2); width: fit-content; font-size: 0.85rem;">Udemy: Data Science, ML, Python & R</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="job-card-wrapper">
+                <div class="timeline-dot"></div>
+                <div class="job-card">
+                    <h3>Data Engineer</h3>
+                    <div class="job-meta">GAMA Security Systems | July 2025 — Present</div>
+                    <ul class="job-list">
+                        <li>Built and maintained scalable data pipelines with Python, PostgreSQL, ClickHouse, Apache NiFi, and Apache Spark, reducing data preparation time by 40% for analytics and ML workflows.</li>
+                        <li>Integrated multiple external APIs (DigiFort, SAFR, AxxonSoft, Vaidio) to ingest and normalize camera and alarm data, enabling real-time monitoring of over 500+ sites.</li>
+                        <li>Performed time-series validation and reconciliation across parallel ingestion pipelines, ensuring 99.9% data consistency in distributed systems.</li>
+                        <li>Developed machine learning models (XGBoost, Prophet) to forecast alarm events and detect anomalies, reducing false-positive alarms by 25% and improving client operational efficiency.</li>
+                        <li>Implemented Python-based ETL automation scripts, accelerating data transformation and ingestion, cutting manual data preparation by 60%.</li>
+                        <li>Designed and deployed cloud-based secure streaming architecture using WebRTC, STUN, and TURN servers, enabling real-time remote camera monitoring across NAT/firewalled networks without exposing endpoints.</li>
+                        <li>Implemented cross-network alarm protocol translation pipelines (SIA, BACnet, Modbus, MQTT), supporting multi-site monitoring and automated alert workflows across 50+ sites.</li>
+                        <li>Created Power BI and Qlik Sense dashboards, delivering actionable operational insights and ML-driven alerts, improving incident response time by 30%.</li>
+                        <li>Demonstrated proactive engineering ownership by building full-stack distributed systems spanning networking, backend, and analytics pipelines, reducing reliance on third-party solutions by 20%.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job-card-wrapper">
+                <div class="timeline-dot"></div>
+                <div class="job-card">
+                    <h3>Data Analyst / Power BI Developer Intern</h3>
+                    <div class="job-meta">Smartix Smart Infocomm | Aug 2024 — Mar 2025</div>
+                    <ul class="job-list">
+                        <li>Conducted in-depth sales analysis to identify trends, seasonal patterns, and customer purchasing behaviors, helping optimize stock allocation and sales strategies.</li>
+                        <li>Analyzed product sales performance across different store locations, pinpointing best-selling and underperforming items to guide restocking and promotional efforts.</li>
+                        <li>Worked closely with the sales team to investigate slow-moving inventory, identifying potential causes such as pricing, placement, and demand shifts.</li>
+                        <li>Provided data-backed recommendations on discounting and bundling strategies to improve sales of low-performing products.</li>
+                        <li>Developed automated reports in Power BI to track sales velocity, inventory turnover rates, and profit margins, enabling more data-driven decision-making.</li>
+                        <li>Assisted in forecasting demand based on historical sales data, minimizing overstocking and stockouts to improve operational efficiency.</li>
+                        <li>Partnered with the marketing team to measure the impact of promotions and campaigns on product sales, refining future strategies for maximum impact.</li>
+                        <li>Ensured accurate tracking of stock movement, identifying discrepancies between recorded and actual inventory levels to prevent losses and inefficiencies.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Selected Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card" onclick="openModal('trading')">
+                <div class="p-title">LLM-Powered Trading EDA Agent</div>
+                <div class="p-date">Nov 2025 - Dec 2025</div>
+                <div class="p-desc">AI-driven quantitative research agent that automates data profiling, visualization, trading signal generation, and report writing using local LLMs.</div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Plotly</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">Ollama</span>
+                    <span class="tech-tag">Llama 3.2</span>
+                    <span class="tech-tag">yfinance</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('watchdog')">
+                <div class="p-title">AI Process Watchdog</div>
+                <div class="p-date">Sep 2025 - Oct 2025</div>
+                <div class="p-desc">Self-healing agentic monitoring system that detects, diagnoses, and automatically resolves failures in Windows applications using LLM-based remediation.</div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">psutil</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">Ollama</span>
+                    <span class="tech-tag">GitHub API</span>
+                    <span class="tech-tag">Windows Events</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('navigreen')">
+                <div class="p-title">NaviGreen App</div>
+                <div class="p-date">Nov 2023 - Apr 2024</div>
+                <div class="p-desc">Sustainable transportation mobile app with ML-powered transport mode classification, eco-friendly routing, and reward-based incentives using TensorFlow.</div>
+                <div class="tech-stack">
+                    <span class="tech-tag">React Native</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Power BI</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('pillbot')">
+                <div class="p-title">Pillbot Smart Dispenser</div>
+                <div class="p-date">Oct 2022 - Apr 2023</div>
+                <div class="p-desc">IoT medicine dispensing system with backend patient management and nursing efficiency analytics.</div>
+                <div class="tech-stack">
+                    <span class="tech-tag">IoT</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Arduino</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">UI/UX</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Arsenal</h2>
+        <div class="skills-container">
+            <div class="chart-wrapper">
+                <canvas id="skillsChart"></canvas>
+            </div>
+            
+            <div class="skills-text">
+                <div class="skill-category">
+                    <h3>Programming & Data</h3>
+                    <div class="tag-cloud">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Time-Series</span>
+                        <span class="skill-tag">ClickHouse</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Machine Learning & AI</h3>
+                    <div class="tag-cloud">
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Prophet</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">LLM Agents</span>
+                        <span class="skill-tag">Forecasting</span>
+                        <span class="skill-tag">Anomaly Detection</span>
+                        <span class="skill-tag">CNN</span>
+                        <span class="skill-tag">Random Forest</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Engineering & Cloud</h3>
+                    <div class="tag-cloud">
+                        <span class="skill-tag">Apache Spark</span>
+                        <span class="skill-tag">Apache NiFi</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">WebRTC</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Visualization</h3>
+                    <div class="tag-cloud">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Qlik Sense</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-section">
+            <div class="contact-info">
+                <h3>Let's build something scalable.</h3>
+                <p style="color: var(--text-dim); margin-bottom: 30px;">Open for opportunities in Data Science and Quantitative Research.</p>
+                
+                <div><i class="fas fa-envelope"></i> <a href="mailto:abhinands1973@gmail.com">abhinands1973@gmail.com</a></div>
+                <div><i class="fas fa-phone"></i> <a href="tel:+971567316718">+971 56 731 6718</a></div>
+                <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/abhinand-sunil/" target="_blank">linkedin.com/in/abhinand-sunil</a></div>
+                <div><i class="fas fa-map-marker-alt"></i> Dubai, UAE</div>
+            </div>
+            
+            <!-- EmailJS Contact Form -->
+            <form id="contactForm">
+                <input type="text" id="name" name="from_name" placeholder="Name" required style="width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white; font-family: inherit; border-radius: 0;">
+                <input type="email" id="email" name="from_email" placeholder="Email" required style="width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white; font-family: inherit; border-radius: 0;">
+                <textarea id="message" name="message" rows="5" placeholder="Message" required style="width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(0,0,0,0.3); border: 1px solid #444; color: white; font-family: inherit; border-radius: 0;"></textarea>
+                <input type="hidden" name="to_name" value="Abhinand">
+                <div id="formStatus" class="form-status"></div>
+                <button type="submit" class="btn-main" style="width: 100%; border: none; cursor: pointer;">SEND TRANSMISSION</button>
+            </form>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: #666; font-size: 0.9rem; background: #0a0c0e; border-top: 1px solid var(--neon-lime);">
+        &copy; 2026 Abhinand Sunil. All systems operational.
+    </footer>
+
+    <!-- AI CHAT WIDGET - NEON TECH -->
+<div class="ai-chat-widget">
+    <div class="chat-bubble" onclick="toggleChat()" style="background: var(--neon-lime); color: var(--black); border: 2px solid var(--tech-blue); box-shadow: 0 0 30px rgba(204, 254, 3, 0.7);">
+        <i style="color: var(--tech-blue);"></i> Ask me about Abhinand!
+    </div>
+    <div class="ai-fab" onclick="toggleChat()" style="background: var(--neon-lime); border: 2px solid var(--tech-blue); box-shadow: 0 5px 30px rgba(204, 254, 3, 0.7);">
+        <i class="fas fa-robot" style="color: var(--black);"></i>
+    </div>
+    <div class="chat-window" id="chatWindow" style="border: 2px solid var(--neon-lime);">
+        <div class="chat-header" style="background: var(--neon-lime); color: var(--black);">
+            <span>AI Assistant</span>
+            <span onclick="toggleChat()" style="cursor: pointer;">&times;</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="msg bot">👋 Hello! I know everything about Abhinand's experience, projects, education, and skills. Ask me anything!</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" class="chat-input" placeholder="Ask me anything..." onkeypress="handleKey(event)">
+            <button class="chat-send" onclick="sendMessage()" style="background: var(--neon-lime); color: var(--black);">SEND</button>
+        </div>
+    </div>
+</div>
+
+    <!-- MODAL -->
+    <div id="projectModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // ====================================================================
+        // 📚 ABHINAND'S COMPLETE PORTFOLIO KNOWLEDGE BASE
+        // ====================================================================
+        const PORTFOLIO = {
+            personal: {
+                name: "Abhinand Sunil",
+                location: "Dubai, UAE",
+                visa: "Golden Visa",
+                role: "Data Scientist / Data Engineer",
+                focus: ["Machine Learning", "System Design", "Automation", "Time-Series Analysis", "Scalable Pipelines"]
+            },
+            education: [
+                {
+                    institution: "Middlesex University, Dubai",
+                    degree: "BEng (Honors) Computer Systems Engineering",
+                    honors: "First Class Honours",
+                    year: 2024
+                },
+                {
+                    institution: "Our Own English High School, Sharjah",
+                    curriculum: "CBSE",
+                    grade12: "92%",
+                    grade10: "95%"
+                }
+            ],
+            certifications: [
+                "Cisco Programming Essentials in Python",
+                "Azure Data Fundamentals",
+                "Oracle Java Pathway",
+                "Udemy: Data Science, Machine Learning, Python & R"
+            ],
+            experience: [
+                {
+                    company: "GAMA Security Systems",
+                    role: "Data Engineer",
+                    period: "July 2025 - Present",
+                    highlights: [
+                        "Built scalable data pipelines with Python, PostgreSQL, ClickHouse, Apache NiFi, Apache Spark - reduced data prep time by 40%",
+                        "Integrated 500+ sites via REST APIs (DigiFort, SAFR, AxxonSoft, Vaidio) for real-time monitoring",
+                        "Performed time-series validation across parallel pipelines - 99.9% data consistency",
+                        "Developed XGBoost and Prophet models to forecast alarms and detect anomalies - reduced false positives by 25%",
+                        "Implemented Python ETL automation - cut manual prep by 60%",
+                        "Deployed secure WebRTC streaming with STUN/TURN for remote monitoring across NAT/firewalls",
+                        "Cross-network protocol translation (SIA, BACnet, Modbus, MQTT) for 50+ sites",
+                        "Created Power BI and Qlik Sense dashboards - improved incident response by 30%",
+                        "Full-stack ownership: networking, backend, analytics - reduced third-party reliance by 20%"
+                    ]
+                },
+                {
+                    company: "Smartix Smart Infocomm",
+                    role: "Data Analyst / Power BI Developer Intern",
+                    period: "Aug 2024 - Mar 2025",
+                    highlights: [
+                        "Sales analysis: trends, seasonal patterns, customer behavior - optimized stock allocation",
+                        "Product performance analysis across store locations",
+                        "Investigated slow-moving inventory: pricing, placement, demand shifts",
+                        "Recommended discounting and bundling strategies",
+                        "Automated Power BI reports for sales velocity, inventory turnover, profit margins",
+                        "Demand forecasting to minimize overstocking/stockouts",
+                        "Partnered with marketing to measure campaign impact",
+                        "Tracked stock movement discrepancies to prevent losses"
+                    ]
+                }
+            ],
+            projects: [
+                {
+                    name: "LLM-Powered Trading EDA Agent",
+                    date: "Nov 2025 - Dec 2025",
+                    description: "Automated EDA for financial datasets with data cleaning and profiling. Interactive dashboard with candlestick charts, moving averages, volatility metrics. AI analyst agent generating natural language insights on market trends. Exportable AI reports and algorithmic trading signals.",
+                    tech: ["Python", "Pandas", "NumPy", "Plotly", "Streamlit", "Ollama", "yfinance"]
+                },
+                {
+                    name: "AI Process Watchdog",
+                    date: "Sep 2025 - Oct 2025",
+                    description: "Autonomous self-healing system for Windows applications. Monitors crashes, stalls, performance degradation. LLM-based decision engine for real-time remediation. Auto-restart services, edit configs, escalate incidents. Diagnostic logging with event history.",
+                    tech: ["Python", "psutil", "SQLite", "Windows Event Logs", "YAML", "Ollama"]
+                },
+                {
+                    name: "NaviGreen App",
+                    date: "Nov 2023 - Apr 2024",
+                    description: "Sustainable transportation mobile app. ML models to classify transport modes using sensor data. Sustainability scoring with gamified rewards. Analytics dashboard for carbon footprint tracking.",
+                    tech: ["React Native", "TensorFlow", "Flask", "Pandas", "Power BI"]
+                },
+                {
+                    name: "Pillbot Smart Dispenser",
+                    date: "Oct 2022 - Apr 2023",
+                    description: "IoT-enabled medicine dispenser hardware prototype. Database for patient/nurse scheduling and medication tracking. Real-time compliance monitoring. Analytics dashboard for nursing workflow efficiency.",
+                    tech: ["Python", "Arduino", "SQL", "Power BI", "IoT", "UI/UX"]
+                }
+            ],
+            skills: {
+                programming: ["Python", "SQL", "Pandas", "NumPy", "Scikit-learn", "Time-Series Analysis", "ClickHouse", "PostgreSQL"],
+                ml_ai: ["XGBoost", "Prophet", "TensorFlow", "LLM Agents", "Forecasting", "Anomaly Detection"],
+                engineering: ["Apache Spark", "Apache NiFi", "Azure", "WebRTC", "Docker", "ETL Pipelines", "REST APIs"],
+                visualization: ["Power BI", "Qlik Sense", "Matplotlib", "Seaborn", "Plotly"]
+            },
+            contact: {
+                email: "abhi@gmail.com",
+                phone: "+971 12 345 6789",
+                linkedin: "linkedin.com/in/abhinand",
+                location: "Dubai, UAE"
+            }
+        };
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init('jBGVR0aZtBGtctEIs');
+        })();
+        
+        const EMAILJS_SERVICE_ID = 'service_gx25xho';
+        const EMAILJS_TEMPLATE_ID = 'template_koz5hob';
+
+        // --- TYPEWRITER EFFECT ---
+        const words = ["Data Science.", "Engineering.", "Automation.", "Strategy."];
+        let wordIndex = 0, charIndex = 0, isDeleting = false;
+        let typewriterTimer;
+        
+        function typeWriter() {
+            const span = document.getElementById('typewriter');
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                span.innerHTML = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                span.innerHTML = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typewriterTimer = setTimeout(typeWriter, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typewriterTimer = setTimeout(typeWriter, 500);
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                typewriterTimer = setTimeout(typeWriter, speed);
+            }
+        }
+        
+        if (document.getElementById('typewriter')) {
+            setTimeout(typeWriter, 500);
+        }
+
+        // --- SPIDER CHART ---
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    ['Machine', 'Learning'], 
+                    ['Data', 'Engineering'], 
+                    ['Python', '& SQL'], 
+                    'Automation', 
+                    ['Strategic', 'Analytics'], 
+                    ['Cloud &', 'DevOps'], 
+                    'Visualization'
+                ],
+                datasets: [{
+                    label: 'Skill Proficiency',
+                    data: [92, 88, 95, 82, 78, 72, 85],
+                    backgroundColor: 'rgba(204, 254, 3, 0.12)',
+                    borderColor: '#CCFE03',
+                    pointBackgroundColor: '#CCFE03',
+                    pointBorderColor: '#fff',
+                    borderWidth: 2.5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(204, 254, 3, 0.15)' },
+                        grid: { color: 'rgba(255,255,255,0.1)' },
+                        pointLabels: { 
+                            color: '#fff', 
+                            font: { 
+                                size: 11, 
+                                family: 'JetBrains Mono, monospace',
+                                weight: '500'
+                            } 
+                        },
+                        ticks: { 
+                            display: false, 
+                            backdropColor: 'transparent' 
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                }
+            }
+        });
+
+        // --- EMAILJS CONTACT FORM ---
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const statusDiv = document.getElementById('formStatus');
+            
+            if (!name || !email || !message) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = 'rgba(255, 0, 0, 0.1)';
+                statusDiv.style.borderColor = '#ff0000';
+                statusDiv.style.color = '#ff6b6b';
+                statusDiv.textContent = 'ERROR: ALL FIELDS REQUIRED';
+                setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
+                return;
+            }
+            
+            if (!email.includes('@') || !email.includes('.')) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.background = 'rgba(255, 0, 0, 0.1)';
+                statusDiv.style.borderColor = '#ff0000';
+                statusDiv.style.color = '#ff6b6b';
+                statusDiv.textContent = 'ERROR: INVALID EMAIL FORMAT';
+                setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
+                return;
+            }
+            
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = 'rgba(204, 254, 3, 0.1)';
+            statusDiv.style.borderColor = 'var(--neon-lime)';
+            statusDiv.style.color = 'var(--neon-lime)';
+            statusDiv.textContent = '⏳ TRANSMITTING...';
+            
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_name: 'Abhinand',
+                reply_to: email,
+            };
+            
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    statusDiv.textContent = '✓ MESSAGE SENT! I\'ll respond within 24 hours.';
+                    document.getElementById('contactForm').reset();
+                    setTimeout(() => { statusDiv.style.display = 'none'; }, 4000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    statusDiv.style.background = 'rgba(255, 0, 0, 0.1)';
+                    statusDiv.style.borderColor = '#ff0000';
+                    statusDiv.style.color = '#ff6b6b';
+                    statusDiv.textContent = '⚠️ TRANSMISSION FAILED. PLEASE TRY AGAIN.';
+                    setTimeout(() => { statusDiv.style.display = 'none'; }, 4000);
+                });
+        });
+
+        // --- PROJECT MODAL - UPDATED WITH RICH DETAILS AND IMAGE PLACEHOLDERS ---
+        const projects = {
+            'trading': `
+                <div class="github-btn-container">
+                    <a href="https://github.com/AbhinandSunil/EDA-Agent" target="_blank" class="github-btn">
+                        <i class="fab fa-github"></i> VIEW ON GITHUB
+                    </a>
+                </div>
+                
+                <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--neon-lime);">LLM-Powered Trading Data EDA & Research Agent</h2>
+
+                <!-- MAIN DASHBOARD IMAGE -->
+                <div class="project-image">
+                        <img src="images/edaagentdash.png" alt="Trading Dashboard" style="width: 100%; height: auto;">
+                    </div>
+                </div>
+                
+                
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Overview</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">An AI-driven exploratory data analysis and quantitative research agent that automates data profiling, visualization, trading signal generation, and report writing. The system combines traditional data science pipelines with LLM-powered reasoning to produce both executive-friendly summaries and technical quantitative analysis, mimicking workflows used in trading desks and data science teams.</p>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Key Features</h3>
+                <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Automated Data Preparation:</strong> Cleans and normalizes structured datasets, detects missing values, duplicates, and generates full automated EDA profiling reports</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Time-Series Visualization:</strong> Automatically detects numeric time-series columns and generates trend plots</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Quantitative Trading Signals:</strong> Implements moving average crossover strategy producing BUY/SELL signals for research prototyping</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Multi-Level AI Reporting:</strong> Executive summaries, technical quantitative analysis, and actionable trading recommendations</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Professional Trading Dashboard:</strong> Interactive candlestick charts, moving average overlays, volume analysis, and dynamic KPI cards</li>
+                </ul>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">System Architecture</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">Data Ingestion → EDA & Visualization → Signal Generation → LLM Research Agent → Reporting Layer → Interactive UI (Streamlit)</p>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Tech Stack</h3>
+                <div class="tech-stack" style="margin-bottom: 20px;">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Plotly</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">Ollama</span>
+                    <span class="tech-tag">Llama 3.2</span>
+                    <span class="tech-tag">ydata-profiling</span>
+                    <span class="tech-tag">yfinance</span>
+                </div>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Example AI Analyst Output</h3>
+                <p style="color: #ccc; background: #1a1d21; padding: 15px; border-left: 3px solid var(--neon-lime); margin-bottom: 20px;">
+                    <strong>Trend Summary:</strong> Market shows bullish momentum with increasing moving average crossover.<br>
+                    <strong>Key Risks:</strong> Elevated volatility and declining volume indicate potential trend reversal risk.<br>
+                    <strong>Actionable Insight:</strong> Monitor MA crossover and volume confirmation before entering long positions.
+                </p>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Why This Project Matters</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">This project demonstrates building AI-powered data products, integrating LLMs into analytics workflows, financial time-series visualization, end-to-end ML system engineering, and product-style dashboard development. It mirrors real quant research tools and fintech analytics platforms.</p>
+            `,
+            
+            'watchdog': `
+                <div class="github-btn-container">
+                    <a href="https://github.com/AbhinandSunil/AgentWatchDog" target="_blank" class="github-btn">
+                        <i class="fab fa-github"></i> VIEW ON GITHUB
+                    </a>
+                </div>
+                
+               
+                
+                <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--neon-lime);">Agent Watchdog: Self-Healing Agentic Monitoring System</h2>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Overview</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">A real-time monitoring and anomaly detection system for distributed agents, with logging, health tracking, and automated alerting. The system continuously monitors application health, performs root cause analysis using logs and system telemetry, applies automated remediation actions, and escalates unresolved issues to developers. This project demonstrates concepts in agentic AI systems, system observability, automated remediation, and AI-assisted operations (AIOps).</p>
+                
+                 <!-- FLOWCHART IMAGE AT TOP -->
+                <div class="project-image" style="width: 80%; max-width: 800px; height: 50; margin: 10px auto;">
+                    <img src="images/agentwatchdog.png" alt="System Architecture" style="width: 100%; height: auto;">
+                </div>
+
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Key Features</h3>
+                <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Real-Time Monitoring:</strong> Monitors process health, performance metrics, detects crashes, hangs, and throughput degradation using heartbeat logs</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Automated Diagnosis:</strong> Parses structured logs and Windows event data, resolves crash symbols to source-level file and line numbers</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Self-Healing Actions:</strong> Automatically restarts applications, dynamically edits configuration parameters, applies remediation strategies based on LLM decisions</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Intelligent Escalation:</strong> Opens GitHub issues with structured logs, root cause analysis, and suggested fixes when automated recovery fails</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Learning & Adaptation:</strong> Logs remediation actions and outcomes to analyze historical effectiveness and improve future decisions</li>
+                </ul>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">System Architecture</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">Application → Heartbeat Logger → Agent Watchdog → LLM Decision Engine → Remediation / Escalation → Historical Learning</p>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Structure</h3>
+                <pre style="color: #ccc; background: #1a1d21; padding: 15px; font-size: 0.8rem; margin-bottom: 20px; overflow-x: auto;">
+agent-watchdog/
+├── agent_watchdog.py           # Main monitoring loop and remediation executor
+├── deep_diag.py                # Diagnostic utilities and GitHub escalation
+├── agent_diagnostics.py        # Log discovery, stall detection, AI reports
+├── deep_heal_prompt.txt        # LLM policy prompt for remediation
+├── heartbeat_logger.py         # Heartbeat generator for stall detection
+├── learn.py                    # Post-mortem learning and reboot scheduling
+├── airport_config.yaml         # Application runtime configuration
+└── requirements.txt            # Python dependencies
+                </pre>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Tech Stack</h3>
+                <div class="tech-stack" style="margin-bottom: 20px;">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">psutil</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">Ollama</span>
+                    <span class="tech-tag">GitHub API</span>
+                    <span class="tech-tag">Windows Events</span>
+                    <span class="tech-tag">YAML</span>
+                    <span class="tech-tag">subprocess</span>
+                </div>
+                
+                <!-- OUTPUT IMAGE AT BOTTOM -->
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Sample Output</h3>
+                 <!-- FLOWCHART IMAGE AT BOTTOM -->
+                <div class="project-image" style="width: 100%; max-width: 800px; height: auto; margin: 10px auto;">
+                    <img src="images/watchdogoutput.png" alt="System Architecture" style="width: 100%; height: auto;">
+                </div>
+                
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Example Use Cases</h3>
+                <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Automated recovery for critical Windows services</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> AI-assisted DevOps troubleshooting</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Enterprise application uptime monitoring</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Self-healing infrastructure prototypes</li>
+                </ul>
+            `,
+            
+            'navigreen': `
+    <div class="github-btn-container">
+        <a href="https://github.com/AbhinandSunil/NaviGreen" target="_blank" class="github-btn">
+            <i class="fab fa-github"></i> VIEW ON GITHUB
+        </a>
+    </div>
+    
+    <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--neon-lime);">NaviGreen: Sustainable Transportation Mobile App</h2>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Overview</h3>
+    <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">A sustainable transportation mobile app built with React Native and machine learning to optimize commute routes and detect travel modes. Uses TensorFlow for mode classification, Flask backend, and real-time APIs to provide eco-friendly routing insights and reward-based incentives. This project demonstrates full-stack ML system design, including mobile frontend, backend APIs, ML pipelines, and data analytics workflows.</p>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Key Features</h3>
+    <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Transport Mode Classification:</strong> ML models classify user travel mode (walking, cycling, car, public transport) using sensor data</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Eco-Friendly Route Recommendations:</strong> Real-time navigation APIs suggest sustainable commuting routes</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Reward-Based Sustainability System:</strong> Users earn points for choosing environmentally friendly transportation options</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Backend Analytics Pipeline:</strong> Python-based data processing to analyze commuting patterns and generate insights</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>RFID Point Redemption:</strong> Arduino-based RFID card scanner for users to redeem their sustainability points</li>
+    </ul>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Machine Learning Pipeline</h3>
+    <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Implemented multiple ML models including CNN, Random Forest, KNN, Gradient Boosting, and Logistic Regression</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Evaluated models using accuracy, precision, recall, ROC AUC, and confusion matrices</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Selected CNN as final model based on ROC AUC and scalability for complex, high-dimensional data</li>
+    </ul>
+    
+    <!-- APP UI SCREENSHOTS SECTION -->
+    <h3 style="color: var(--white); margin-bottom: 20px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Final Mobile App Interface</h3>
+    
+    <div style="text-align: center; width: 100%; overflow-x: auto;">
+        <!-- First Row: First 4 images -->
+        <table style="margin: 0 auto; border-collapse: collapse; width: 100%; max-width: 900px;">
+            <tr>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/loginscreen.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Login Screen</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/signupscreen.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Signup Screen</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/homescreen.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Home Screen</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/profilescreen.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Profile Screen</strong>
+                </td>
+            </tr>
+            
+            <!-- Second Row: Next 4 images -->
+            <tr>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen1.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Map Screen 1</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen2.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Map Screen 2</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen3.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Cycling Mode</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen4.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Walking Mode</strong>
+                </td>
+            </tr>
+            
+            <!-- Third Row: Next 4 images -->
+            <tr>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen5.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Carpooling Screen</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen6.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Available Cars</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/mapscreen7.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Taxi Reached Screen</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/cardscreen1.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Card Screen 1</strong>
+                </td>
+            </tr>
+            
+            <!-- Fourth Row: Last 3 images + empty cell -->
+            <tr>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/cardscreen2.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Add Card</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/cardscreen3.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Added Card Screen</strong>
+                </td>
+                <td style="padding: 10px; text-align: center; vertical-align: top;">
+                    <img src="images/redeemscreen.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Redeem Screen</strong>
+                </td>
+                <td style="padding: 10px;"></td> <!-- Empty cell for alignment -->
+            </tr>
+        </table>
+    </div>
+    
+    <!-- MODEL EVALUATION RESULTS SECTION -->
+    <h3 style="color: var(--white); margin-bottom: 20px; border-left: 3px solid var(--neon-lime); padding-left: 12px; margin-top: 40px;">Model Evaluation Results</h3>
+    
+    <h4 style="color: var(--tech-blue); margin-bottom: 15px; text-align: center;">Confusion Matrix (Best Model)</h4>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <img src="images/CMcnn.jpeg" width="500" style="border-radius: 8px; border: 1px solid var(--border-dim); max-width: 100%;">
+    </div>
+    
+    <h4 style="color: var(--tech-blue); margin-bottom: 15px; text-align: center;">Model Accuracy Comparison</h4>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <img src="images/modelaccuracydistribution.jpeg" width="500" style="border-radius: 8px; border: 1px solid var(--border-dim); max-width: 100%;">
+    </div>
+    
+    <h4 style="color: var(--tech-blue); margin-bottom: 15px; text-align: center;">Precision & Recall Comparison</h4>
+    <div style="text-align: center; width: 100%; overflow-x: auto; margin-bottom: 30px;">
+        <table style="margin: 0 auto; border-collapse: collapse; width: 100%; max-width: 1100px;">
+            <tr>
+                <td style="padding: 15px; text-align: center; vertical-align: top;">
+                    <img src="images/precision.jpeg" width="450" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Model Precision Comparison - Bar Graph</strong>
+                </td>
+                <td style="padding: 15px; text-align: center; vertical-align: top;">
+                    <img src="images/Recall.jpeg" width="450" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                    <strong style="color: var(--neon-lime); font-size: 0.9rem;">Model Recall Comparison - Bar Graph</strong>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <h4 style="color: var(--tech-blue); margin-bottom: 15px; text-align: center;">ROC AUC Comparison</h4>
+    <div style="text-align: center; margin-bottom: 30px;">
+        <img src="images/ROCAUC.jpeg" width="500" style="border-radius: 8px; border: 1px solid var(--border-dim); max-width: 100%;">
+    </div>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">System Architecture</h3>
+    <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Frontend:</strong> React Native mobile app</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Backend:</strong> Flask REST API</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Machine Learning:</strong> TensorFlow, Scikit-learn</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Hardware Integration:</strong> Arduino for RFID point redemption</li>
+    </ul>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Tech Stack</h3>
+    <div class="tech-stack" style="margin-bottom: 20px;">
+        <span class="tech-tag">React Native</span>
+        <span class="tech-tag">TensorFlow</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">Pandas</span>
+        <span class="tech-tag">NumPy</span>
+        <span class="tech-tag">Scikit-learn</span>
+        <span class="tech-tag">Power BI</span>
+        <span class="tech-tag">Arduino</span>
+        <span class="tech-tag">REST API</span>
+    </div>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Model Selection and Discussion</h3>
+    <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">Random Forest achieved slightly higher overall accuracy; however, CNN demonstrated better class discrimination based on ROC AUC and scalability for complex, high-dimensional data. Given the expected growth in dataset size and feature complexity, CNN was selected as the final model for deployment.</p>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Future Improvements</h3>
+    <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Carbon footprint estimation per trip</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Personalized route recommendations using reinforcement learning</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Cloud deployment for scalable analytics</li>
+        <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Integration with smart city datasets</li>
+    </ul>
+    
+    <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Research Context</h3>
+    <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">T    his project demonstrates end-to-end machine learning system design, including mobile development, backend services, ML pipelines, and data analytics workflows.</p>
+`,
+            
+            'pillbot': `
+                
+                <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--neon-lime);">Pillbot — Smart Medicine Dispenser System</h2>
+                <h3 style="color: var(--white); margin-bottom: 15px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Overview</h3>
+                <p style="color: #ccc; margin-bottom: 25px; line-height: 1.8;">A smart IoT-enabled medication dispenser designed to improve nursing efficiency and reduce missed medication events through automation and analytics. This project showcases IoT system integration, healthcare analytics, and product prototyping for improving patient care and operational efficiency in medical settings.</p>
+                
+                <div class="project-image" style="width: 40%; max-width: 600px; height: auto; margin: 10px auto;">
+                    <img src="images/pillbot.png" alt="Pillbot Smart Dispenser" style="width: 100%; height: auto;">
+                </div>
+
+                <h3 style="color: var(--white); margin-bottom: 15px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Key Features</h3>
+                <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 25px;">
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Hardware prototype for automated pill dispensing</li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Database system for patient and nurse scheduling</li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Real-time medication tracking and compliance monitoring</li>
+                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Analytics dashboard measuring nursing workflow efficiency</li>
+                </ul>
+                
+                <h3 style="color: var(--white); margin-bottom: 15px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Tech Stack</h3>
+                <div class="tech-stack" style="margin-bottom: 25px;">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Arduino</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">UI/UX</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">IoT</span>
+                </div>
+            `
+        };
+
+        function openModal(projectId) {
+            document.getElementById('modalBody').innerHTML = projects[projectId];
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // --- CHAT TOGGLE ---
+        function toggleChat() {
+            const chat = document.getElementById('chatWindow');
+            if (chat) {
+                if (chat.style.display === 'flex') {
+                    chat.style.display = 'none';
+                } else {
+                    chat.style.display = 'flex';
+                }
+            }
+        }
+
+        function handleKey(e) { 
+            if(e.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // ====================================================================
+        // 🤖 SMART CHATBOT - KNOWS EVERYTHING ABOUT ABHINAND
+        // ====================================================================
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const body = document.getElementById('chatBody');
+            const txt = input.value.trim().toLowerCase();
+            
+            if(!txt) return;
+
+            // Add user message
+            body.innerHTML += `<div class="msg user">${input.value.trim()}</div>`;
+            input.value = '';
+            body.scrollTop = body.scrollHeight;
+
+            // Show loading
+            body.innerHTML += `<div class="msg bot" id="loading">🧠 Thinking...</div>`;
+            body.scrollTop = body.scrollHeight;
+
+            // Simulate thinking time
+            setTimeout(() => {
+                document.getElementById('loading')?.remove();
+                
+                let reply = "";
+
+                // ============= COMPLETE KNOWLEDGE BASE =============
+                
+                // --- COMPANIES / EMPLOYERS ---
+                if (txt.includes('company') || txt.includes('employer') || txt.includes('work for') || 
+                    txt.includes('companies') || txt.includes('worked for') || txt.includes('name the companies')) {
+                    reply = "Abhinand has worked for **2 companies**:\n\n• **GAMA Security Systems** - Data Engineer (July 2025 - Present)\n• **Smartix Smart Infocomm** - Data Analyst / Power BI Developer Intern (Aug 2024 - Mar 2025)";
+                }
+                
+                // --- GAMA SECURITY ---
+                else if (txt.includes('gama') || (txt.includes('security') && !txt.includes('smartix'))) {
+                    reply = "**GAMA Security Systems** (July 2025 - Present):\n\nAbhinand is a Data Engineer there. Key achievements:\n▹ Built scalable pipelines with Python, ClickHouse, Spark, NiFi - 40% faster data prep\n▹ Integrated 500+ sites via REST APIs for real-time monitoring\n▹ Developed XGBoost/Prophet models - 25% reduction in false alarms\n▹ Deployed WebRTC streaming for secure remote monitoring\n▹ Translated SIA, BACnet, Modbus, MQTT protocols for 50+ sites\n▹ Created Power BI/Qlik dashboards - 30% faster incident response";
+                }
+                
+                // --- SMARTIX ---
+                else if (txt.includes('smartix') || (txt.includes('intern') && !txt.includes('gama'))) {
+                    reply = "**Smartix Smart Infocomm** (Aug 2024 - Mar 2025):\n\nAbhinand was a Data Analyst / Power BI Developer Intern. Key achievements:\n▹ Automated Power BI reports for sales velocity and inventory turnover\n▹ Conducted seasonal trend analysis to optimize stock allocation\n▹ Analyzed product performance across store locations\n▹ Recommended discounting strategies for slow-moving inventory\n▹ Partnered with marketing to measure campaign impact";
+                }
+                
+                // --- EDUCATION ---
+                else if (txt.includes('university') || txt.includes('study') || txt.includes('education') || 
+                         txt.includes('degree') || txt.includes('middlesex') || txt.includes('school')) {
+                    reply = "**Education:**\n\n• **Middlesex University, Dubai**\n  BEng (Honors) Computer Systems Engineering\n  First Class Honours | 2024\n\n• **Our Own English High School, Sharjah**\n  CBSE Curriculum\n  Grade 12: 92% | Grade 10: 95%";
+                }
+                
+                // --- CERTIFICATIONS ---
+                else if (txt.includes('certification') || txt.includes('certificate') || txt.includes('course')) {
+                    reply = "**Certifications:**\n\n▹ Cisco Programming Essentials in Python\n▹ Azure Data Fundamentals\n▹ Oracle Java Pathway\n▹ Udemy: Data Science, Machine Learning, Python & R";
+                }
+                
+                // --- PROJECTS OVERVIEW ---
+                else if (txt.includes('project') && !txt.includes('trading') && !txt.includes('watchdog') && 
+                         !txt.includes('navigreen') && !txt.includes('pillbot')) {
+                    reply = "Abhinand has **4 key projects**:\n\n• **LLM-Powered Trading EDA Agent** - AI financial analysis platform\n• **AI Process Watchdog** - Self-healing Windows service monitor\n• **NaviGreen App** - Sustainable transportation with ML\n• **Pillbot** - IoT smart medicine dispenser\n\nAsk me about any specific project for details!";
+                }
+                
+                // --- TRADING AGENT ---
+                else if (txt.includes('trading') || txt.includes('eda') || (txt.includes('agent') && txt.includes('llm'))) {
+                    reply = "**LLM-Powered Trading EDA Agent** (Nov-Dec 2025):\n\n▹ AI-driven quantitative research agent automating data profiling and analysis\n▹ Interactive dashboard with candlestick charts & volatility metrics\n▹ Moving average crossover trading signals\n▹ Multi-level AI reporting (executive summaries, technical analysis)\n▹ Built with Streamlit, Plotly, and Ollama (Llama 3.2)\n\n**Tech:** Python, Pandas, Plotly, Streamlit, Ollama, yfinance";
+                }
+                
+                // --- WATCHDOG ---
+                else if (txt.includes('watchdog') || txt.includes('self-healing') || txt.includes('process') || txt.includes('agentic')) {
+                    reply = "**AI Process Watchdog** (Sep-Oct 2025):\n\n▹ Self-healing agentic monitoring system for Windows applications\n▹ Detects crashes, stalls, and performance degradation\n▹ LLM-based root cause analysis using logs and telemetry\n▹ Automated remediation (restart, reconfigure, escalate)\n▹ GitHub issue auto-creation with diagnostic details\n▹ Learning system that tracks historical effectiveness\n\n**Tech:** Python, psutil, SQLite, Ollama, GitHub API, Windows Events";
+                }
+                
+                // --- NAVIGREEN ---
+                else if (txt.includes('navigreen') || txt.includes('sustainable') || txt.includes('transport') || txt.includes('green')) {
+                    reply = "**NaviGreen App** (Nov 2023 - Apr 2024):\n\n▹ Sustainable transportation mobile app with ML-powered mode classification\n▹ CNN, Random Forest, and other models for travel mode detection\n▹ Eco-friendly route recommendations via real-time APIs\n▹ Reward-based sustainability system with RFID point redemption\n▹ Comprehensive ML evaluation (precision, recall, ROC AUC)\n▹ Full-stack implementation: React Native, TensorFlow, Flask\n\n**Tech:** React Native, TensorFlow, Flask, Pandas, Scikit-learn, Arduino, Power BI";
+                }
+                
+                // --- PILLBOT ---
+                else if (txt.includes('pillbot') || txt.includes('medicine') || txt.includes('dispenser') || txt.includes('iot')) {
+                    reply = "**Pillbot Smart Dispenser** (Oct 2022 - Apr 2023):\n\n▹ IoT-enabled medicine dispenser hardware prototype\n▹ Database for patient/nurse scheduling & medication tracking\n▹ Real-time compliance monitoring\n▹ Analytics dashboard for nursing workflow efficiency\n\n**Tech:** Python, Arduino, SQL, Power BI, IoT, UI/UX";
+                }
+                
+                // --- SKILLS ---
+                else if (txt.includes('skill') || txt.includes('tech') || txt.includes('know') || txt.includes('stack')) {
+                    reply = "**Technical Skills:**\n\n**Programming & Data:**\nPython, SQL, Pandas, NumPy, Scikit-learn, Time-Series, ClickHouse, PostgreSQL\n\n**ML & AI:**\nXGBoost, Prophet, TensorFlow, LLM Agents, Forecasting, Anomaly Detection, CNN, Random Forest\n\n**Engineering & Cloud:**\nApache Spark, NiFi, Azure, WebRTC, Docker, ETL Pipelines, REST APIs\n\n**Visualization:**\nPower BI, Qlik Sense, Matplotlib, Seaborn, Plotly\n\n**Hardware:**\nArduino, IoT Systems";
+                }
+                
+                // --- LOCATION / VISA ---
+                else if (txt.includes('location') || txt.includes('dubai') || txt.includes('visa') || txt.includes('golden')) {
+                    reply = "Abhinand is based in **Dubai, UAE** and holds a **Golden Visa**.";
+                }
+                
+                // --- CONTACT ---
+                else if (txt.includes('contact') || txt.includes('email') || txt.includes('reach') || txt.includes('phone')) {
+                    reply = "**Contact Information:**\n\n📧 Email: abhinands1973@gmail.com\n📞 Phone: +971 56 731 6718\n💼 LinkedIn: www.linkedin.com/in/abhinand-sunil\n📍 Location: Dubai, UAE\n\nYou can also use the contact form on this page!";
+                }
+                
+                // --- RESUME / CV ---
+                else if (txt.includes('resume') || txt.includes('cv')) {
+                    reply = "You can download Abhinand's resume by clicking the **RESUME button** in the navigation bar at the top of the page!";
+                }
+                
+                // --- GREETINGS ---
+                else if (txt.includes('hello') || txt.includes('hi') || txt.includes('hey')) {
+                    reply = "👋 Hello! I'm Abhinand's AI assistant. I know everything about his experience, projects, education, and skills. What would you like to know?";
+                }
+                
+                // --- THANK YOU ---
+                else if (txt.includes('thank')) {
+                    reply = "You're welcome! 😊 Feel free to ask me anything else about Abhinand's portfolio.";
+                }
+                
+                // --- HELP / DEFAULT ---
+                else {
+                    reply = "I can help you learn about:\n\n• **Experience** - GAMA Security, Smartix\n• **Projects** - Trading Agent (LLM financial analysis), Watchdog (self-healing system), NaviGreen (sustainable transport ML app), Pillbot (IoT medicine dispenser)\n• **Education** - Middlesex University, high school\n• **Skills** - Python, ML, Data Engineering, Power BI, TensorFlow\n• **Certifications** - Azure, Cisco, Oracle\n• **Contact** - Email, phone, LinkedIn\n\nWhat would you like to know?";
+                }
+                
+                body.innerHTML += `<div class="msg bot">${reply}</div>`;
+                body.scrollTop = body.scrollHeight;
+            }, 600);
+        }
+
+        // Smooth scroll for logo click
+        const logoLink = document.querySelector('.logo a');
+        if (logoLink) {
+            logoLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#hero').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>
