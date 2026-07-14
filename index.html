@@ -954,7 +954,7 @@
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
-            <a href="Abhinand-Resume-DE.pdf" download class="resume-btn">
+            <a href="AbhinandDataEngineer.pdf" download class="resume-btn">
                 <i class="fas fa-download"></i> RESUME
             </a>
         </div>
@@ -1128,7 +1128,7 @@
                 <div class="timeline-dot"></div>
                 <div class="job-card">
                     <h3>Data Analyst / Power BI Developer Intern</h3>
-                    <div class="job-meta">Smartix Smart Infocomm | Nov 2024 — Jun 2025</div>
+                    <div class="job-meta">Smartix Smart Infocomm | Aug 2024 — Mar 2025</div>
                     <ul class="job-list">
                         <li>Conducted in-depth sales analysis to identify trends, seasonal patterns, and customer purchasing behaviors, helping optimize stock allocation and sales strategies.</li>
                         <li>Analyzed product sales performance across different store locations, pinpointing best-selling and underperforming items to guide restocking and promotional efforts.</li>
@@ -1147,7 +1147,20 @@
     <section id="projects">
         <h2>Selected Projects</h2>
         <div class="projects-grid">
-            
+
+            <div class="project-card" onclick="openModal('localconnect')">
+                <div class="p-title">Urbency — SME Services App</div>
+                <div class="p-date">Figma Product Design</div>
+                <div class="p-desc">An everyday-services marketplace app concept connecting UAE customers with verified small and independent service providers — AC technicians, plumbers, electricians, cleaners — from discovery to secure in-app booking and payment.</div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">UI/UX Design</span>
+                    <span class="tech-tag">Prototyping</span>
+                    <span class="tech-tag">Design Systems</span>
+                    <span class="tech-tag">User Flows</span>
+                </div>
+            </div>
+
             <div class="project-card" onclick="openModal('trading')">
                 <div class="p-title">LLM-Powered Trading EDA Agent</div>
                 <div class="p-date">Nov 2025 - Dec 2025</div>
@@ -1171,7 +1184,6 @@
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">psutil</span>
                     <span class="tech-tag">SQLite</span>
-                    <span class="tech-tag">Ollama</span>
                     <span class="tech-tag">GitHub API</span>
                     <span class="tech-tag">Windows Events</span>
                 </div>
@@ -1188,20 +1200,6 @@
                     <span class="tech-tag">Pandas</span>
                     <span class="tech-tag">Scikit-learn</span>
                     <span class="tech-tag">Power BI</span>
-                </div>
-            </div>
-
-            <div class="project-card" onclick="openModal('pillbot')">
-                <div class="p-title">Pillbot Smart Dispenser</div>
-                <div class="p-date">Oct 2022 - Apr 2023</div>
-                <div class="p-desc">IoT medicine dispensing system with backend patient management and nursing efficiency analytics.</div>
-                <div class="tech-stack">
-                    <span class="tech-tag">IoT</span>
-                    <span class="tech-tag">Power BI</span>
-                    <span class="tech-tag">SQL</span>
-                    <span class="tech-tag">Arduino</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">UI/UX</span>
                 </div>
             </div>
         </div>
@@ -1278,7 +1276,7 @@
                 <p style="color: var(--text-dim); margin-bottom: 30px;">Open for opportunities in Data Science and Quantitative Research.</p>
                 
                 <div><i class="fas fa-envelope"></i> <a href="mailto:abhinands1973@gmail.com">abhinands1973@gmail.com</a></div>
-                <div><i class="fas fa-phone"></i> <a href="tel:+971567316718">+971 56 731 6718</a></div>
+                <div><i class="fas fa-phone"></i> <a href="tel:+971-567316718">+971-567316718</a></div>
                 <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/abhinand-sunil/" target="_blank">linkedin.com/in/abhinand-sunil</a></div>
                 <div><i class="fas fa-map-marker-alt"></i> Dubai, UAE</div>
             </div>
@@ -1382,7 +1380,7 @@
                 {
                     company: "Smartix Smart Infocomm",
                     role: "Data Analyst / Power BI Developer Intern",
-                    period: "Nov 2024 - Jun 2025",
+                    period: "Aug 2024 - Mar 2025",
                     highlights: [
                         "Sales analysis: trends, seasonal patterns, customer behavior - optimized stock allocation",
                         "Product performance analysis across store locations",
@@ -1396,6 +1394,12 @@
                 }
             ],
             projects: [
+                {
+                    name: "Urbenct — SME Services App",
+                    date: "Figma Product Design",
+                    description: "An everyday-services marketplace app connecting UAE customers with verified small and independent service providers (AC technicians, plumbers, electricians, cleaners). Covers discovery, verified provider profiles, booking flow, in-app messaging, and secure payments, backed by a commission and subscription-based revenue model.",
+                    tech: ["Figma", "UI/UX Design", "Prototyping", "Design Systems", "User Flows"]
+                },
                 {
                     name: "LLM-Powered Trading EDA Agent",
                     date: "Nov 2025 - Dec 2025",
@@ -1413,12 +1417,6 @@
                     date: "Nov 2023 - Apr 2024",
                     description: "Sustainable transportation mobile app. ML models to classify transport modes using sensor data. Sustainability scoring with gamified rewards. Analytics dashboard for carbon footprint tracking.",
                     tech: ["React Native", "TensorFlow", "Flask", "Pandas", "Power BI"]
-                },
-                {
-                    name: "Pillbot Smart Dispenser",
-                    date: "Oct 2022 - Apr 2023",
-                    description: "IoT-enabled medicine dispenser hardware prototype. Database for patient/nurse scheduling and medication tracking. Real-time compliance monitoring. Analytics dashboard for nursing workflow efficiency.",
-                    tech: ["Python", "Arduino", "SQL", "Power BI", "IoT", "UI/UX"]
                 }
             ],
             skills: {
@@ -1444,7 +1442,7 @@
         const EMAILJS_TEMPLATE_ID = 'template_koz5hob';
 
         // --- TYPEWRITER EFFECT ---
-        const words = ["Data Science.", "Engineering.", "Automation.", "Strategy."];
+        const words = ["Data Science.", "Engineering.", "Software Development.", "UI/UX Design.", "Automation.", "Strategy."];
         let wordIndex = 0, charIndex = 0, isDeleting = false;
         let typewriterTimer;
         
@@ -1592,6 +1590,185 @@
 
         // --- PROJECT MODAL - UPDATED WITH RICH DETAILS AND IMAGE PLACEHOLDERS ---
         const projects = {
+            'localconnect': `
+
+                <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--neon-lime);">Urbency — SME Services App</h2>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Overview</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">An everyday-services marketplace app that connects customers with verified small and independent service providers across the UAE. The mission is to simplify access to trusted daily services — AC maintenance, cleaning, plumbing, electrical repairs — while empowering local businesses to grow through digital discovery, seamless bookings, and fair monetization. Designed end-to-end in Figma, from user research and wireframes through to a high-fidelity interactive prototype.</p>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">The Problem</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">Finding reliable home service providers in the UAE is fragmented and inefficient — customers rely on word-of-mouth, unverified listings, or expensive platforms with limited choice and transparency. At the same time, small service businesses struggle with visibility, customer acquisition, and digital tools, resulting in inconsistent service quality and a lack of trust on both sides.</p>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Target Users & Market</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">The ideal user is a time-constrained urban resident aged 25–50, living in an apartment or villa, who values convenience, transparency, and verified providers with clear pricing and reviews. On the supply side, the app serves small and medium home-service businesses such as AC technicians, plumbers, electricians, and cleaners. The UAE on-demand home services market was valued at approximately AED 3.5 billion in 2023, driven by high urban density, smartphone penetration above 99%, and year-round demand for maintenance and cleaning services.</p>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">The Solution</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">Urbency acts as a trusted digital bridge between customers and local service providers. Customers can discover verified professionals, compare options, book services, and make secure payments within the app. Service providers gain digital visibility, access to qualified leads, and tools to manage bookings and payments — while the platform stays asset-light by not employing professionals directly, enabling wider choice, faster availability, and competitive pricing.</p>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Key Features</h3>
+                <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 20px;">
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>SME Discovery:</strong> Category-based browsing and search for local service providers, filterable by rating, price, and availability</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Verified Provider Profiles:</strong> Trust-building profiles with reviews, portfolios, and transparent service pricing</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Booking Flow:</strong> Streamlined scheduling with date/time selection, service customization, and instant confirmation</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>In-App Messaging:</strong> Direct chat between customers and SME providers to clarify job details</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Secure Payments:</strong> In-app checkout with a small convenience fee per booking, plus booking history and status tracking</li>
+                    <li style="margin-bottom: 8px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> <strong>Provider Dashboard:</strong> Lead management, booking calendar, and performance analytics for SME partners</li>
+                </ul>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Competitive Landscape</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">Key competitors include Urban Company, Justlife, and MrUsta. Urban Company offers strong branding and standardized services but charges higher commissions and limits provider flexibility; Justlife focuses on premium bundled services but is less inclusive of small independent businesses; MrUsta operates as a marketplace but has limited brand reach and UX challenges. Urbency differentiates with a partner-first, marketplace model — lower commissions, flexible monetization, wider service variety, and faster scaling without directly employing professionals.</p>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Revenue Model</h3>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">A multi-stream model: commissions on completed services (typically 10–20%), monthly subscription plans for higher provider visibility and analytics tools, lead-based pricing for high-demand services, and paid featured listings — alongside a small customer-facing convenience fee per booking.</p>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Design Process</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">User Research → Wireframes → Design System → High-Fidelity Screens → Interactive Prototype → Usability Testing</p>
+
+                <h3 style="color: var(--white); margin-bottom: 20px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">App Screens — Customer Side</h3>
+                <p style="color: #999; font-size: 0.85rem; margin-bottom: 15px;">The consumer-facing experience: browsing services, discovering providers, booking, paying, and managing your account.</p>
+
+                <div style="text-align: center; width: 100%; overflow-x: auto; margin-bottom: 30px;">
+                    <table style="margin: 0 auto; border-collapse: collapse; width: 100%; max-width: 900px;">
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/splash.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Splash Screen</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userselect.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">User Select</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/urbencylogin.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Login Page</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userbookservice.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Services</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userhomeclean.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Home Cleaning</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userSMEdetails.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Services by Company</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userSMEdetails.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Company Details</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userschedulebooking.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Scheduling</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userpayment.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Payment</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/otp.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">OTP</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userbookings.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Bookings</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/useroffers.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Offers</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/userprofile.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Profile</strong>
+                            </td>
+                            <td style="padding: 10px;"></td>
+                            <td style="padding: 10px;"></td>
+                            <td style="padding: 10px;"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3 style="color: var(--white); margin-bottom: 20px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">App Screens — Service Provider Side</h3>
+                <p style="color: #999; font-size: 0.85rem; margin-bottom: 15px;">The provider-facing experience: managing bookings, tracking earnings and ratings, and running the business from the app.</p>
+
+                <div style="text-align: center; width: 100%; overflow-x: auto; margin-bottom: 20px;">
+                    <table style="margin: 0 auto; border-collapse: collapse; width: 100%; max-width: 900px;">
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bnesshome.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Home</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bookinganalytics.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Booking Analytics</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/earningsanalytics.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Earnings Analytics</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/serviceanalytics.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Service Analytics</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/ratinganalytics.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Ratings Analytics</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bnessbookings.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Active Bookings</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/urbencybookingdetails.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Booking Details</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bnessservices.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Manage Services</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bnesswallet.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Wallet</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bnesswithdrawfunds.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Withdraw Funds</strong>
+                            </td>
+                            <td style="padding: 10px; text-align: center; vertical-align: top;">
+                                <img src="images/bnessprofile.jpeg" width="180" style="border-radius: 8px; border: 1px solid var(--border-dim);"><br>
+                                <strong style="color: var(--neon-lime); font-size: 0.9rem;">Profile & Settings</strong>
+                            </td>
+                            <td style="padding: 10px;"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Tech Stack</h3>
+                <div class="tech-stack" style="margin-bottom: 20px;">
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">UI/UX Design</span>
+                    <span class="tech-tag">Prototyping</span>
+                    <span class="tech-tag">Design Systems</span>
+                    <span class="tech-tag">User Flows</span>
+                    <span class="tech-tag">Auto Layout</span>
+                </div>
+
+                <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Why This Project Matters</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">This project demonstrates product thinking and interaction design skills that complement the data and engineering work above — mapping a real market problem (fragmented, low-trust access to home services in the UAE) to a validated business model, clear information architecture, usable flows, and a cohesive visual design system.</p>
+            `,
+
             'trading': `
                 <div class="github-btn-container">
                     <a href="https://github.com/AbhinandSunil/EDA-Agent" target="_blank" class="github-btn">
@@ -1901,36 +2078,7 @@ agent-watchdog/
     
     <h3 style="color: var(--white); margin-bottom: 10px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Research Context</h3>
     <p style="color: #ccc; margin-bottom: 20px; line-height: 1.7;">T    his project demonstrates end-to-end machine learning system design, including mobile development, backend services, ML pipelines, and data analytics workflows.</p>
-`,
-            
-            'pillbot': `
-                
-                <h2 style="margin-bottom: 20px; font-size: 2rem; color: var(--neon-lime);">Pillbot — Smart Medicine Dispenser System</h2>
-                <h3 style="color: var(--white); margin-bottom: 15px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Project Overview</h3>
-                <p style="color: #ccc; margin-bottom: 25px; line-height: 1.8;">A smart IoT-enabled medication dispenser designed to improve nursing efficiency and reduce missed medication events through automation and analytics. This project showcases IoT system integration, healthcare analytics, and product prototyping for improving patient care and operational efficiency in medical settings.</p>
-                
-                <div class="project-image" style="width: 40%; max-width: 600px; height: auto; margin: 10px auto;">
-                    <img src="images/pillbot.png" alt="Pillbot Smart Dispenser" style="width: 100%; height: auto;">
-                </div>
-
-                <h3 style="color: var(--white); margin-bottom: 15px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Key Features</h3>
-                <ul style="color: #bbb; list-style: none; padding-left: 0; margin-bottom: 25px;">
-                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Hardware prototype for automated pill dispensing</li>
-                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Database system for patient and nurse scheduling</li>
-                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Real-time medication tracking and compliance monitoring</li>
-                    <li style="margin-bottom: 12px; padding-left: 25px; position: relative;"><span style="color: var(--neon-lime); position: absolute; left: 0;">▹</span> Analytics dashboard measuring nursing workflow efficiency</li>
-                </ul>
-                
-                <h3 style="color: var(--white); margin-bottom: 15px; border-left: 3px solid var(--neon-lime); padding-left: 12px;">Tech Stack</h3>
-                <div class="tech-stack" style="margin-bottom: 25px;">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Arduino</span>
-                    <span class="tech-tag">SQL</span>
-                    <span class="tech-tag">UI/UX</span>
-                    <span class="tech-tag">Power BI</span>
-                    <span class="tech-tag">IoT</span>
-                </div>
-            `
+`
         };
 
         function openModal(projectId) {
@@ -1997,7 +2145,7 @@ agent-watchdog/
                 // --- COMPANIES / EMPLOYERS ---
                 if (txt.includes('company') || txt.includes('employer') || txt.includes('work for') || 
                     txt.includes('companies') || txt.includes('worked for') || txt.includes('name the companies')) {
-                    reply = "Abhinand has worked for **2 companies**:\n\n• **GAMA Security Systems** - Data Engineer (July 2025 - Present)\n• **Smartix Smart Infocomm** - Data Analyst / Power BI Developer Intern (Nov 2024 - Jun 2025)";
+                    reply = "Abhinand has worked for **2 companies**:\n\n• **GAMA Security Systems** - Data Engineer (July 2025 - Present)\n• **Smartix Smart Infocomm** - Data Analyst / Power BI Developer Intern (Aug 2024 - Mar 2025)";
                 }
                 
                 // --- GAMA SECURITY ---
@@ -2007,7 +2155,7 @@ agent-watchdog/
                 
                 // --- SMARTIX ---
                 else if (txt.includes('smartix') || (txt.includes('intern') && !txt.includes('gama'))) {
-                    reply = "**Smartix Smart Infocomm** (Nov 2024 - Jun 2025):\n\nAbhinand was a Data Analyst / Power BI Developer Intern. Key achievements:\n▹ Automated Power BI reports for sales velocity and inventory turnover\n▹ Conducted seasonal trend analysis to optimize stock allocation\n▹ Analyzed product performance across store locations\n▹ Recommended discounting strategies for slow-moving inventory\n▹ Partnered with marketing to measure campaign impact";
+                    reply = "**Smartix Smart Infocomm** (Aug 2024 - Mar 2025):\n\nAbhinand was a Data Analyst / Power BI Developer Intern. Key achievements:\n▹ Automated Power BI reports for sales velocity and inventory turnover\n▹ Conducted seasonal trend analysis to optimize stock allocation\n▹ Analyzed product performance across store locations\n▹ Recommended discounting strategies for slow-moving inventory\n▹ Partnered with marketing to measure campaign impact";
                 }
                 
                 // --- EDUCATION ---
@@ -2023,8 +2171,13 @@ agent-watchdog/
                 
                 // --- PROJECTS OVERVIEW ---
                 else if (txt.includes('project') && !txt.includes('trading') && !txt.includes('watchdog') && 
-                         !txt.includes('navigreen') && !txt.includes('pillbot')) {
-                    reply = "Abhinand has **4 key projects**:\n\n• **LLM-Powered Trading EDA Agent** - AI financial analysis platform\n• **AI Process Watchdog** - Self-healing Windows service monitor\n• **NaviGreen App** - Sustainable transportation with ML\n• **Pillbot** - IoT smart medicine dispenser\n\nAsk me about any specific project for details!";
+                         !txt.includes('navigreen') && !txt.includes('urbency') && !txt.includes('figma')) {
+                    reply = "Abhinand has **4 key projects**:\n\n• **Urbency** - Figma-designed SME services app\n• **LLM-Powered Trading EDA Agent** - AI financial analysis platform\n• **AI Process Watchdog** - Self-healing Windows service monitor\n• **NaviGreen App** - Sustainable transportation with ML\n\nAsk me about any specific project for details!";
+                }
+
+                // --- URBENCY / FIGMA APP ---
+                else if (txt.includes('urbency') || txt.includes('figma') || txt.includes('sme')) {
+                    reply = "**Urbency — SME Services App** (Figma Product Design):\n\n▹ An everyday-services marketplace connecting UAE customers with verified local SMEs — AC technicians, plumbers, electricians, cleaners\n▹ Covers discovery, verified provider profiles, booking flow, in-app messaging, and secure payments\n▹ Revenue via 10-20% commissions, subscriptions, lead-based pricing, and featured listings\n▹ Designed end-to-end: research, wireframes, design system, 24 high-fidelity screens across customer and provider sides, and an interactive prototype\n\n**Tools:** Figma, UI/UX Design, Prototyping, Design Systems";
                 }
                 
                 // --- TRADING AGENT ---
@@ -2042,14 +2195,9 @@ agent-watchdog/
                     reply = "**NaviGreen App** (Nov 2023 - Apr 2024):\n\n▹ Sustainable transportation mobile app with ML-powered mode classification\n▹ CNN, Random Forest, and other models for travel mode detection\n▹ Eco-friendly route recommendations via real-time APIs\n▹ Reward-based sustainability system with RFID point redemption\n▹ Comprehensive ML evaluation (precision, recall, ROC AUC)\n▹ Full-stack implementation: React Native, TensorFlow, Flask\n\n**Tech:** React Native, TensorFlow, Flask, Pandas, Scikit-learn, Arduino, Power BI";
                 }
                 
-                // --- PILLBOT ---
-                else if (txt.includes('pillbot') || txt.includes('medicine') || txt.includes('dispenser') || txt.includes('iot')) {
-                    reply = "**Pillbot Smart Dispenser** (Oct 2022 - Apr 2023):\n\n▹ IoT-enabled medicine dispenser hardware prototype\n▹ Database for patient/nurse scheduling & medication tracking\n▹ Real-time compliance monitoring\n▹ Analytics dashboard for nursing workflow efficiency\n\n**Tech:** Python, Arduino, SQL, Power BI, IoT, UI/UX";
-                }
-                
                 // --- SKILLS ---
                 else if (txt.includes('skill') || txt.includes('tech') || txt.includes('know') || txt.includes('stack')) {
-                    reply = "**Technical Skills:**\n\n**Programming & Data:**\nPython, SQL, Pandas, NumPy, Scikit-learn, Time-Series, ClickHouse, PostgreSQL\n\n**ML & AI:**\nXGBoost, Prophet, TensorFlow, LLM Agents, Forecasting, Anomaly Detection, CNN, Random Forest\n\n**Engineering & Cloud:**\nApache Spark, NiFi, Azure, WebRTC, Docker, ETL Pipelines, REST APIs\n\n**Visualization:**\nPower BI, Qlik Sense, Matplotlib, Seaborn, Plotly\n\n**Hardware:**\nArduino, IoT Systems";
+                    reply = "**Technical Skills:**\n\n**Programming & Data:**\nPython, SQL, Pandas, NumPy, Scikit-learn, Time-Series, ClickHouse, PostgreSQL\n\n**ML & AI:**\nXGBoost, Prophet, TensorFlow, LLM Agents, Forecasting, Anomaly Detection, CNN, Random Forest\n\n**Engineering & Cloud:**\nApache Spark, NiFi, Azure, WebRTC, Docker, ETL Pipelines, REST APIs\n\n**Visualization:**\nPower BI, Qlik Sense, Matplotlib, Seaborn, Plotly\n\n**Product Design:**\nFigma, UI/UX Design, Prototyping";
                 }
                 
                 // --- LOCATION / VISA ---
@@ -2079,7 +2227,7 @@ agent-watchdog/
                 
                 // --- HELP / DEFAULT ---
                 else {
-                    reply = "I can help you learn about:\n\n• **Experience** - GAMA Security, Smartix\n• **Projects** - Trading Agent (LLM financial analysis), Watchdog (self-healing system), NaviGreen (sustainable transport ML app), Pillbot (IoT medicine dispenser)\n• **Education** - Middlesex University, high school\n• **Skills** - Python, ML, Data Engineering, Power BI, TensorFlow\n• **Certifications** - Azure, Cisco, Oracle\n• **Contact** - Email, phone, LinkedIn\n\nWhat would you like to know?";
+                    reply = "I can help you learn about:\n\n• **Experience** - GAMA Security, Smartix\n• **Projects** - Urbency (Figma SME app), Trading Agent (LLM financial analysis), Watchdog (self-healing system), NaviGreen (sustainable transport ML app)\n• **Education** - Middlesex University, high school\n• **Skills** - Python, ML, Data Engineering, Power BI, TensorFlow, Figma\n• **Certifications** - Azure, Cisco, Oracle\n• **Contact** - Email, phone, LinkedIn\n\nWhat would you like to know?";
                 }
                 
                 body.innerHTML += `<div class="msg bot">${reply}</div>`;
@@ -2088,7 +2236,7 @@ agent-watchdog/
         }
 
         // Smooth scroll for logo click
-        const logoLink = document.querySelector('.logo a');
+        const logoLink = document.querySelector('.logo a'); 
         if (logoLink) {
             logoLink.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2097,8 +2245,4 @@ agent-watchdog/
         }
     </script>
 </body>
-
 </html>
-
-
-
